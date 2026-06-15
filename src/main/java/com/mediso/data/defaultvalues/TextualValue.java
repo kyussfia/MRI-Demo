@@ -6,10 +6,10 @@ public enum TextualValue {
     SERIAL_NUMBER("Serial number", "221.100.21-asd-1234", false, 50),
     SOFTWARE_VERSION("Software version", "3.11.0", false, 50);
 
-    private String name;
-    private String defaultValue;
-    private boolean canBeEmpty;
-    private int maxLength;
+    private final String name;
+    private final String defaultValue;
+    private final boolean canBeEmpty;
+    private final int maxLength;
 
     TextualValue(String name, String defaultValue, boolean canBeEmpty, int maxLength) {
         this.name = name;
@@ -30,6 +30,7 @@ public enum TextualValue {
         return canBeEmpty;
     }
 
+    @SuppressWarnings("unused")
     public int getMaxLength() {
         return maxLength;
     }

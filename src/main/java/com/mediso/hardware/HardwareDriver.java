@@ -12,9 +12,9 @@ import com.mediso.sequence.Sequence;
 import com.mediso.sequence.SequenceEvent;
 
 public class HardwareDriver {
-    private Socket clientSocket;
-    private ObjectOutputStream out;
-    private ObjectInputStream in;
+    private final Socket clientSocket;
+    private final ObjectOutputStream out;
+    private final ObjectInputStream in;
 
     public HardwareDriver(String ip, int port) throws IOException {
         clientSocket = new Socket(ip, port);

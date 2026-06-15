@@ -25,26 +25,32 @@ public class SequenceEvent implements Serializable {
         return delay;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getTx() {
         return tx;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getRx() {
         return rx;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getAcq() {
         return acq;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getGradX() {
         return gradX;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getGradY() {
         return gradY;
     }
 
+    @SuppressWarnings("unused")
     public SequenceItem getGradZ() {
         return gradZ;
     }

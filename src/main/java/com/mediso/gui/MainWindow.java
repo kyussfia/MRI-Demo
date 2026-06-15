@@ -1,18 +1,11 @@
 package com.mediso.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
 import com.mediso.data.Header;
 import com.mediso.sequence.GradientEcho;
 import com.mediso.sequence.Sequence;
 import com.mediso.sequence.SpinEcho;
+
+import javax.swing.*;
 
 public class MainWindow {
     public static JFrame show() {
@@ -24,18 +17,15 @@ public class MainWindow {
         panel.add(dropdown);
 
         JButton openSequence = new JButton("Open sequence");
-        openSequence.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Header header = new Header();
-                Sequence sequence;
-                if ("Gradient Echo".equals(dropdown.getSelectedItem())) {
-                    sequence = new GradientEcho(header);
-                } else {
-                    sequence = new SpinEcho(header);
-                }
-                AcquisitionManagerGui.createWindow(sequence);
+        openSequence.addActionListener(e -> {
+            Header header = new Header();
+            Sequence sequence;
+            if ("Gradient Echo".equals(dropdown.getSelectedItem())) {
+                sequence = new GradientEcho(header);
+            } else {
+                sequence = new SpinEcho(header);
             }
+            AcquisitionManagerGui.createWindow(sequence);
         });
         panel.add(openSequence);
 

@@ -57,7 +57,7 @@ public class NumericListParam extends AbstractParam<List<Double>> {
 
     @Override
     public String getValueAsString() {
-        return numbers.stream().map(d -> d.toString()).collect(Collectors.joining(","));
+        return numbers.stream().map(Object::toString).collect(Collectors.joining(","));
     }
 
     @Override
@@ -87,34 +87,42 @@ public class NumericListParam extends AbstractParam<List<Double>> {
         out.println("[" + numbers.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]");
     }
 
+    @SuppressWarnings("unused")
     public double getMinValue() {
         return minValue;
     }
 
+    @SuppressWarnings("unused")
     public void setMinValue(double minValue) {
         this.minValue = minValue;
     }
 
+    @SuppressWarnings("unused")
     public double getMaxValue() {
         return maxValue;
     }
 
+    @SuppressWarnings("unused")
     public void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }
 
+    @SuppressWarnings("unused")
     public int getMinLength() {
         return minLength;
     }
 
+    @SuppressWarnings("unused")
     public void setMinLength(int minLength) {
         this.minLength = minLength;
     }
 
+    @SuppressWarnings("unused")
     public int getMaxLength() {
         return maxLength;
     }
 
+    @SuppressWarnings("unused")
     public void setMaxLength(int maxLength) {
         this.maxLength = maxLength;
     }

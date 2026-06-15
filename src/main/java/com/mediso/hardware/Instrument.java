@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Instrument {
-    private final String INSTRUMENT_FILE = "instrument.txt";
+    private static final String INSTRUMENT_FILE = "instrument.txt";
     private String model;
     private double delayMultiplier;
     private double baselineAmplitude;
@@ -54,6 +54,7 @@ public class Instrument {
         }
     }
 
+    @SuppressWarnings("unused")
     public String getModel() {
         return model;
     }
@@ -78,22 +79,27 @@ public class Instrument {
         return gaussianSigma;
     }
 
+    @SuppressWarnings("unused")
     public void setDelayMultiplier(double delayMultiplier) {
         this.delayMultiplier = delayMultiplier;
     }
 
+    @SuppressWarnings("unused")
     public void setBaselineAmplitude(double baselineAmplitude) {
         this.baselineAmplitude = baselineAmplitude;
     }
 
+    @SuppressWarnings("unused")
     public void setNoiseAmplitude(double NoiseAmplitude) {
         this.NoiseAmplitude = NoiseAmplitude;
     }
 
+    @SuppressWarnings("unused")
     public void setGaussianAmplitude(double gaussianAmplitude) {
         this.gaussianAmplitude = gaussianAmplitude;
     }
 
+    @SuppressWarnings("unused")
     public void setGaussianSigma(double gaussianSigma) {
         this.gaussianSigma = gaussianSigma;
     }

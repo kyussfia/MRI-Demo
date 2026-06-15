@@ -60,18 +60,22 @@ public class NumericParam extends AbstractParam<Double> {
         out.println(value);
     }
 
+    @SuppressWarnings("unused")
     public double getMinValue() {
         return minValue;
     }
 
+    @SuppressWarnings("unused")
     public void setMinValue(double minValue) {
         this.minValue = minValue;
     }
 
+    @SuppressWarnings("unused")
     public double getMaxValue() {
         return maxValue;
     }
 
+    @SuppressWarnings("unused")
     public void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }

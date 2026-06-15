@@ -59,10 +59,12 @@ public class TextParam implements Param<String> {
         out.println(text);
     }
 
+    @SuppressWarnings("unused")
     public boolean isCanBeEmpty() {
         return canBeEmpty;
     }
 
+    @SuppressWarnings("unused")
     public void setCanBeEmpty(boolean canBeEmpty) {
         this.canBeEmpty = canBeEmpty;
     }

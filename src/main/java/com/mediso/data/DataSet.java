@@ -1,7 +1,7 @@
 package com.mediso.data;
 
 public class DataSet extends Header {
-    private double[] data;
+    private final double[] data;
 
     public DataSet(Header header, double[] data) {
         super.values = header.values;

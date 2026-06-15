@@ -33,6 +33,7 @@ public class Header {
         values.add(param);
     }
 
+    @SuppressWarnings("unused")
     public TextParam getTextParam(TextualValue value) {
         return (TextParam) values.stream()
             .filter(param -> param.getName().equals(value.getName()))
@@ -40,6 +41,7 @@ public class Header {
             .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + value.getName()));
     }
 
+    @SuppressWarnings("unused")
     public TextParam getTextParam(String name) {
         return (TextParam) values.stream()
             .filter(param -> param.getName().equals(name))
@@ -68,6 +70,7 @@ public class Header {
             .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + value.getName()));
     }
 
+    @SuppressWarnings("unused")
     public NumericListParam getNumericListParam(String name) {
         return (NumericListParam) values.stream()
             .filter(param -> param.getName().equals(name))

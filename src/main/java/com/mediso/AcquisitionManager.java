@@ -36,6 +36,7 @@ public class AcquisitionManager {
             }
         } catch (IOException | InterruptedException error) {
             gui.showMessage("An error occured: " + error.getMessage());
+            //noinspection CallToPrintStackTrace
             error.printStackTrace();
         }
     }

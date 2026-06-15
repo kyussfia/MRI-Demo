@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 import com.mediso.sequence.SequenceEvent;
 
 public class HardwareSimulator extends Thread {
-    private Random random = new Random();
-    private Instrument instrument = new Instrument();
+    private final Random random = new Random();
+    private final Instrument instrument = new Instrument();
     private final ServerSocket serverSocket;
 
     public HardwareSimulator(int port) throws IOException {
@@ -25,15 +25,16 @@ public class HardwareSimulator extends Thread {
             Logger.getGlobal().info("Instrument saved");
             this.serverSocket.close();
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
     }
 
     @Override
-    @SuppressWarnings("java:S2142")
+    @SuppressWarnings({"java:S2142", "InfiniteLoopStatement"})
     public void run() {
         try {
-            while(true) {
+            while (true) {
                 Socket clientSocket = serverSocket.accept();
                 ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
                 ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
