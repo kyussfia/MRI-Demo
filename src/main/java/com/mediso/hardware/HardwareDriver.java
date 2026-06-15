@@ -41,6 +41,7 @@ public class HardwareDriver {
         return result;
     }
 
+    @SuppressWarnings("unused")
     public void stopConnection() throws IOException {
         in.close();
         out.close();

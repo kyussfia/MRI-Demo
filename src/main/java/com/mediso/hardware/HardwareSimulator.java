@@ -43,6 +43,7 @@ public class HardwareSimulator extends Thread {
                 double sigma = instrument.getGaussianSigma();
                 double gaussianAmplitude = instrument.getGaussianAmplitude();
                 while ((input = (SequenceEvent) in.readObject()) != null) {
+                    //noinspection BusyWait
                     Thread.sleep((long) (input.getDelay() * instrument.getDelayMultiplier()));
                     for (int i = 0; i < 128; i++) {
                         double gaussian = gaussianAmplitude * Math.exp(-0.5 * Math.pow(i - 64.0, 2) / (sigma * sigma));
