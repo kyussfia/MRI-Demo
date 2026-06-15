@@ -1,0 +1,6 @@
+model=PET/MRI 3T
+baselineAmplitude=-1.5
+NoiseAmplitude=0.1
+gaussianAmplitude=5.0
+gaussianSigma=5.0
+delayMultiplier=3000.0
