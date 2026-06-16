@@ -25,8 +25,7 @@ public class AcquisitionManager {
             new AverageAndSlidingWindowAndRescale()
         };
         gui.run();
-        try {
-            HardwareDriver hardwareDriver = new HardwareDriver("localhost", 8080);
+        try(HardwareDriver hardwareDriver = new HardwareDriver("localhost", 8080)) {
             double[] data = hardwareDriver.runAcquisition(sequence, gui);
             DataSet dataSet = new DataSet(sequence.getHeader(), data);
             for (ProcessPlugin plugin : pluginList) {

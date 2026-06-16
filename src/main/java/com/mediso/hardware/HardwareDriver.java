@@ -11,7 +11,7 @@ import com.mediso.gui.DataGui;
 import com.mediso.sequence.Sequence;
 import com.mediso.sequence.SequenceEvent;
 
-public class HardwareDriver {
+public class HardwareDriver implements AutoCloseable {
     private final Socket clientSocket;
     private final ObjectOutputStream out;
     private final ObjectInputStream in;
@@ -41,10 +41,47 @@ public class HardwareDriver {
         return result;
     }
 
-    @SuppressWarnings("unused")
     public void stopConnection() throws IOException {
-        in.close();
-        out.close();
-        clientSocket.close();
+        close();
+    }
+
+    @Override
+    public void close() throws IOException {
+        IOException closeException = null;
+        try {
+            if (in != null) {
+                in.close();
+            }
+        } catch (IOException exception) {
+            closeException = exception;
+        }
+
+        try {
+            if (out != null) {
+                out.close();
+            }
+        } catch (IOException exception) {
+            if (closeException == null) {
+                closeException = exception;
+            } else {
+                closeException.addSuppressed(exception);
+            }
+        }
+
+        try {
+            if (clientSocket != null) {
+                clientSocket.close();
+            }
+        } catch (IOException exception) {
+            if (closeException == null) {
+                closeException = exception;
+            } else {
+                closeException.addSuppressed(exception);
+            }
+        }
+
+        if (closeException != null) {
+            throw closeException;
+        }
     }
 }
