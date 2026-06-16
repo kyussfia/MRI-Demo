@@ -34,6 +34,7 @@ public class DataGui extends JPanel implements Runnable {
         });
     }
 
+    @SuppressWarnings("unused")
     private void directRePaint() {
         paintComponent(getGraphics());
     }
