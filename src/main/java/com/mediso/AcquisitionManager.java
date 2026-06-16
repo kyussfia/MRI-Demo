@@ -33,8 +33,13 @@ public class AcquisitionManager {
                 gui.update(dataSet.getData(), plugin.getName() + " done");
                 Thread.sleep(1000);
             }
-        } catch (IOException | InterruptedException error) {
-            gui.showMessage("An error occured: " + error.getMessage());
+        } catch (InterruptedException interrupt) {
+            Thread.currentThread().interrupt();
+            gui.showMessage("Acquisition interrupted");
+            //noinspection CallToPrintStackTrace
+            interrupt.printStackTrace();
+        } catch (IOException error) {
+            gui.showMessage("An error occurred: " + error.getMessage());
             //noinspection CallToPrintStackTrace
             error.printStackTrace();
         }
