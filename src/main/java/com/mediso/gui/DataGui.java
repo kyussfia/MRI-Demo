@@ -23,15 +23,19 @@ public class DataGui extends JPanel implements Runnable {
         SwingUtilities.invokeLater(() -> {
             this.data = dataSet;
             this.message = message;
-            paintComponent(getGraphics());
+            repaint();
         });
     }
 
     public void showMessage(String message) {
         SwingUtilities.invokeLater(() -> {
             this.message = message;
-            paintComponent(getGraphics());
+            repaint();
         });
+    }
+
+    private void directRePaint() {
+        paintComponent(getGraphics());
     }
 
     @Override
