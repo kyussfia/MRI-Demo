@@ -7,8 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class DataGui extends JPanel implements Runnable {
     private double[] data;
@@ -21,14 +20,18 @@ public class DataGui extends JPanel implements Runnable {
     }
 
     public void update(double[] dataSet, String message) {
-        this.data = dataSet;
-        this.message = message;
-        paintComponent(getGraphics());
+        SwingUtilities.invokeLater(() -> {
+            this.data = dataSet;
+            this.message = message;
+            paintComponent(getGraphics());
+        });
     }
 
     public void showMessage(String message) {
-        this.message = message;
-        paintComponent(getGraphics());
+        SwingUtilities.invokeLater(() -> {
+            this.message = message;
+            paintComponent(getGraphics());
+        });
     }
 
     @Override
@@ -79,7 +82,7 @@ public class DataGui extends JPanel implements Runnable {
     }
 
     private int positionToPixel(int i) {
-        return (int) Math.round(((double) i) / data.length * 640);
+        return (int) Math.round(((double) i) / data.length * getWidth());
     }
 
     private int valueToPixel(double value, int height) {

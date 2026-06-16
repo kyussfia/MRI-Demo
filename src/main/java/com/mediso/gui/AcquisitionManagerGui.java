@@ -2,14 +2,7 @@ package com.mediso.gui;
 
 import java.awt.FlowLayout;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 import com.mediso.AcquisitionManager;
 import com.mediso.data.Header;
@@ -51,8 +44,9 @@ public class AcquisitionManagerGui {
         JButton startAcquisition = new JButton("Start acquisition");
         startAcquisition.addActionListener(e -> {
             frame.setEnabled(false);
-            AcquisitionManager.startAcquisition(sequence);
-            frame.setEnabled(true);
+            startAcquisition.setEnabled(false);
+            SwingWorker<Void, Void> acquiring = acquiring(frame, startAcquisition, sequence);
+            acquiring.execute();
         });
 
         row.add(startAcquisition);
@@ -65,5 +59,22 @@ public class AcquisitionManagerGui {
         frame.pack();
         panel.setPreferredSize(panel.getPreferredSize());
         frame.setVisible(true);
+    }
+
+    private static SwingWorker<Void, Void> acquiring(JFrame frame, JButton button, Sequence sequence) {
+        return new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                AcquisitionManager.startAcquisition(sequence);
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                frame.setEnabled(true);
+                button.setEnabled(true);
+                frame.toFront();
+            }
+        };
     }
 }
