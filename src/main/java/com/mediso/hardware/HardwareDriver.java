@@ -41,6 +41,7 @@ public class HardwareDriver implements AutoCloseable {
         return result;
     }
 
+    @SuppressWarnings("unused")
     public void stopConnection() throws IOException {
         close();
     }
